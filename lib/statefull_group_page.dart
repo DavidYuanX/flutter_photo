@@ -25,7 +25,15 @@ class _StateFullGroupState extends State<StateFullGroup>{
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        appBar: AppBar(title: Text('StatelessWidget与基础组件')),
+        appBar: AppBar(
+            title: Text('StatelessWidget与基础组件'),
+            leading: GestureDetector(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              child: Icon(Icons.arrow_back),
+            )
+        ),
         bottomNavigationBar: BottomNavigationBar(
             currentIndex:_currentIndex,
             onTap: (index){
@@ -56,9 +64,35 @@ class _StateFullGroupState extends State<StateFullGroup>{
               alignment: Alignment.center,
               child: Column(
                 children: <Widget>[
-                  Image.network('http://www.devio.opg/img/avatar.png',
-                    width:100,
-                    height:100,),
+                  Row(
+                    children: <Widget>[
+                      ClipOval(
+                        child: SizedBox(
+                          width: 100,
+                          height: 100,
+                          child: Image.network('http://static.sunlands.com/user_center/newUserImagePath/4656924/4656924.jpg?dc=1577441350773',
+                            width:100,
+                            height:100,),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(10),
+                        child: ClipRRect(
+                          borderRadius:
+                          BorderRadius.all(Radius.circular(10)),
+                          child: Opacity(
+                            opacity: 0.6,
+                            child: Image.network('http://static.sunlands.com/user_center/newUserImagePath/4656924/4656924.jpg?dc=1577441350773',
+                              width:100,
+                              height:100,),
+                          ),
+                        ),
+                      ),
+                      Image.network('http://static.sunlands.com/user_center/newUserImagePath/4656924/4656924.jpg?dc=1577441350773',
+                        width:100,
+                        height:100,),
+                    ],
+                  ),
                   TextField(
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.fromLTRB(5, 0, 0, 0),
@@ -68,51 +102,107 @@ class _StateFullGroupState extends State<StateFullGroup>{
                   ),
                   Container(
                     height: 100,
-                    margin: EdgeInsets.only(top:10),
-                    decoration: BoxDecoration(color: Colors.lightBlueAccent),
-                    child: PageView(
-                      children: <Widget>[
-                        _item('page1',Colors.deepPurple),
-                        _item('page2',Colors.green),
-                        _item('page3',Colors.red)
-                      ],
-                    ),
-                  ),
-                  Text('I an Text',
-                    style: textStyle,),
-                  Icon(Icons.android,size: 50,color: Colors.red,),
-                  CloseButton(),
-                  BackButton(),
-                  Chip(
-                    avatar: Icon(Icons.people),
-                    label: Text('1231231231'),
-                  ),
-                  Divider(
-                    height: 10,
-                    indent: 10,
-                    color: Colors.orange,
-                  ),
-                  Card(
-                    color: Colors.blue,
-                    elevation: 5,
                     margin: EdgeInsets.all(10),
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      child: Text(
-                        'I an Card',
-                        style: textStyle,
-                      ),
-                    ),
+//                    decoration: BoxDecoration(color: Colors.lightBlueAccent),
+                    child: PhysicalModel(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(6),
+                        clipBehavior: Clip.antiAlias,
+                        child: PageView(
+                          children: <Widget>[
+                            _item('page1',Colors.deepPurple),
+                            _item('page2',Colors.green),
+                            _item('page3',Colors.red)
+                          ],
+                        ),
+                    )
                   ),
-                  AlertDialog(
-                    title: Text('panta'),
-                    content: Text('adasdsa'),
-                  )
+                  Column(
+                    children: <Widget>[
+                      FractionallySizedBox(
+                        widthFactor: 1,
+                        child: Container(
+                          decoration: BoxDecoration(color: Colors.greenAccent),
+                          child: Text('宽度撑满'),
+                        ),
+                      )
+                    ],
+                  ),
+//                  Text('I an Text',
+//                    style: textStyle,),
+//                  Icon(Icons.android,size: 50,color: Colors.red,),
+//                  CloseButton(),
+//                  BackButton(),
+//                  Chip(
+//                    avatar: Icon(Icons.people),
+//                    label: Text('1231231231'),
+//                  ),
+//                  Divider(
+//                    height: 10,
+//                    indent: 10,
+//                    color: Colors.orange,
+//                  ),
+//                  Card(
+//                    color: Colors.blue,
+//                    elevation: 5,
+//                    margin: EdgeInsets.all(10),
+//                    child: Container(
+//                      padding: EdgeInsets.all(10),
+//                      child: Text(
+//                        'I an Card',
+//                        style: textStyle,
+//                      ),
+//                    ),
+//                  ),
+//                  AlertDialog(
+//                    title: Text('panta'),
+//                    content: Text('adasdsa'),
+//                  )
                 ],
+              ),
+            ),
+            Stack(
+              children: <Widget>[
+                Image.network('http://static.sunlands.com/user_center/newUserImagePath/4656924/4656924.jpg?dc=1577441350773',
+                  width:100,
+                  height:100,),
+                Positioned(
+                  left: 0,
+                  bottom: 0,
+                  child: Image.network('http://static.sunlands.com/user_center/newUserImagePath/4656924/4656924.jpg?dc=1577441350773',
+                    width:36,
+                    height:36,),
+                )
+              ],
+            ),
+            Wrap(
+              spacing: 8, // 横向间距
+              runSpacing: 6, // 垂直间距
+              children: <Widget>[
+                _chip('Flutter'),
+                _chip('Flutter1'),
+                _chip('Flutter2'),
+                _chip('Flutter3'),
+                _chip('Flutter4'),
+                _chip('Flutter5'),
+                _chip('Flutter6'),
+              ],
+            )
+          ],
+        ),onRefresh: _handleRefresh,)
+        : Column(
+          children: <Widget>[
+            Text('列表'),
+            Expanded(
+              child:  Container(
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                ),
+                child: Text('列表列表列表'),
               ),
             )
           ],
-        ),onRefresh: _handleRefresh,): Text('列表'),
+        ),
       ),
     );
   }
@@ -126,5 +216,16 @@ class _StateFullGroupState extends State<StateFullGroup>{
       decoration: BoxDecoration(color: color),
       child: Text(title,style: TextStyle(fontSize: 22,color: Colors.white),),
     );
+  }
+
+  _chip(String label) {
+    return Chip(label: Text(label),
+      avatar: CircleAvatar(
+       backgroundColor: Colors.blue.shade900,
+          child: Text(
+            label.substring(0,1),
+            style: TextStyle(fontSize: 10),
+          ),
+      ),);
   }
 }
