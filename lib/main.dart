@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_photo/gesture_page.dart';
+import 'package:flutter_photo/launcher_page.dart';
 import 'package:flutter_photo/less_group_page.dart';
 import 'package:flutter_photo/plugin_use.dart';
 import 'package:flutter_photo/res_page.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         'Full':(BuildContext context)=>StateFullGroup(),
         'Gesture':(BuildContext context)=>GesturePage(),
         'ResPage':(BuildContext context)=>ResPage(),
+        'LaunchPage':(BuildContext context)=>LaunchPage(),
       },
     );
   }
@@ -68,6 +70,7 @@ class _RouteNavigatorStateState extends State<RouteNavigatorState>{
           _item('fullWidget',StateFullGroup(),'Full'),
           _item('Gesture',GesturePage(),'Gesture'),
           _item('ResPage',ResPage(),'ResPage'),
+          _item('LaunchPage',LaunchPage(),'LaunchPage'),
         ],
       ),
     );
