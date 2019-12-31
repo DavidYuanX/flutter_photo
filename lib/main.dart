@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_photo/app_lifecycle.dart';
+import 'package:flutter_photo/flutter_widget_lifecycle.dart';
 import 'package:flutter_photo/gesture_page.dart';
 import 'package:flutter_photo/launcher_page.dart';
 import 'package:flutter_photo/less_group_page.dart';
@@ -41,9 +43,13 @@ class MyApp extends StatelessWidget {
         'Gesture':(BuildContext context)=>GesturePage(),
         'ResPage':(BuildContext context)=>ResPage(),
         'LaunchPage':(BuildContext context)=>LaunchPage(),
+        'WidgetLifecycle':(BuildContext context)=>WidgetLifecycle(),
+        'AppLifecycle':(BuildContext context)=>AppLifecycle(),
+
       },
     );
   }
+
 }
 // RouteNavigator
 class RouteNavigatorState extends StatefulWidget {
@@ -66,11 +72,13 @@ class _RouteNavigatorStateState extends State<RouteNavigatorState>{
             });
           },),
           _item('包和插件',PluginUse(),'Plugin'),
-          _item('lessWidget',LessGroupPage(),'Less'),
-          _item('fullWidget',StateFullGroup(),'Full'),
-          _item('Gesture',GesturePage(),'Gesture'),
-          _item('ResPage',ResPage(),'ResPage'),
-          _item('LaunchPage',LaunchPage(),'LaunchPage'),
+          _item('lessWidget与基础组件',LessGroupPage(),'Less'),
+          _item('fullWidget与基础组件',StateFullGroup(),'Full'),
+          _item('检测用户手势及处理点击时间',GesturePage(),'Gesture'),
+          _item('导入使用Flutter的资源文件',ResPage(),'ResPage'),
+          _item('打开第三方应用',LaunchPage(),'LaunchPage'),
+          _item('Flutter页面生命周期',WidgetLifecycle(),'WidgetLifecycle'),
+          _item('Flutter应用生命周期',AppLifecycle(),'AppLifecycle'),
         ],
       ),
     );
