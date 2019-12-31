@@ -6,6 +6,7 @@ import 'package:flutter_photo/flutter_widget_lifecycle.dart';
 import 'package:flutter_photo/gesture_page.dart';
 import 'package:flutter_photo/launcher_page.dart';
 import 'package:flutter_photo/less_group_page.dart';
+import 'package:flutter_photo/photo_app_page.dart';
 import 'package:flutter_photo/plugin_use.dart';
 import 'package:flutter_photo/res_page.dart';
 import 'package:flutter_photo/statefull_group_page.dart';
@@ -60,6 +61,7 @@ class _DynamicThemeState extends State<DynamicTheme> {
         'LaunchPage':(BuildContext context)=>LaunchPage(),
         'WidgetLifecycle':(BuildContext context)=>WidgetLifecycle(),
         'AppLifecycle':(BuildContext context)=>AppLifecycle(),
+        'Photo':(BuildContext context)=>Photo(),
 
       },
     );
@@ -94,6 +96,7 @@ class _RouteNavigatorStateState extends State<RouteNavigatorState>{
           _item('打开第三方应用',LaunchPage(),'LaunchPage'),
           _item('Flutter页面生命周期',WidgetLifecycle(),'WidgetLifecycle'),
           _item('Flutter应用生命周期',AppLifecycle(),'AppLifecycle'),
+          _item('拍照and相册',Photo(),'Photo'),
         ],
       ),
     );
@@ -113,7 +116,6 @@ class _RouteNavigatorStateState extends State<RouteNavigatorState>{
   }
 
 }
-
 
 
 //class MyApp extends StatelessWidget {
