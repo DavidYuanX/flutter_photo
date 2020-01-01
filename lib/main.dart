@@ -81,7 +81,9 @@ class _RouteNavigatorStateState extends State<RouteNavigatorState>{
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
+      child: Wrap(
+        spacing: 8, // 横向间距
+        runSpacing: 6, // 垂直间距
         children: <Widget>[
           SwitchListTile(
             title: Text('${byName?'':'不'}通过路由名跳转'),
