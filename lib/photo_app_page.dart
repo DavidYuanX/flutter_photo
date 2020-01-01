@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-class Photo extends StatefulWidget {
+class PhotoPage extends StatefulWidget {
   @override
-  _PhotoState createState() => _PhotoState();
+  _PhotoPageState createState() => _PhotoPageState();
 }
 
-class _PhotoState extends State<Photo> {
+class _PhotoPageState extends State<PhotoPage> {
   List<File> _images = [];
 
   Future getImage(bool isTakePhoto) async {

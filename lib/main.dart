@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_photo/Animate_page.dart';
+import 'package:flutter_photo/PhotoHero.dart';
 import 'package:flutter_photo/app_lifecycle.dart';
 import 'package:flutter_photo/flutter_widget_lifecycle.dart';
 import 'package:flutter_photo/gesture_page.dart';
@@ -39,7 +41,6 @@ class _DynamicThemeState extends State<DynamicTheme> {
               onPressed: (){
                 setState(() {
                   if(_brightness == Brightness.dark){
-                    print(1);
                     _brightness = Brightness.light;
                   } else {
                     _brightness = Brightness.dark;
@@ -61,8 +62,9 @@ class _DynamicThemeState extends State<DynamicTheme> {
         'LaunchPage':(BuildContext context)=>LaunchPage(),
         'WidgetLifecycle':(BuildContext context)=>WidgetLifecycle(),
         'AppLifecycle':(BuildContext context)=>AppLifecycle(),
-        'Photo':(BuildContext context)=>Photo(),
-
+        'Photo':(BuildContext context)=>PhotoPage(),
+        'LogoAnimateApp':(BuildContext context)=>LogoAnimateApp(),
+        'HeroAnimation':(BuildContext context)=>RadiaExpansionDemo(),
       },
     );
   }
@@ -96,7 +98,9 @@ class _RouteNavigatorStateState extends State<RouteNavigatorState>{
           _item('打开第三方应用',LaunchPage(),'LaunchPage'),
           _item('Flutter页面生命周期',WidgetLifecycle(),'WidgetLifecycle'),
           _item('Flutter应用生命周期',AppLifecycle(),'AppLifecycle'),
-          _item('拍照and相册',Photo(),'Photo'),
+          _item('拍照and相册',PhotoPage(),'Photo'),
+          _item('Flutter动画',LogoAnimateApp(),'LogoAnimateApp'),
+          _item('FlutterHero动画',RadiaExpansionDemo(),'HeroAnimation'),
         ],
       ),
     );
