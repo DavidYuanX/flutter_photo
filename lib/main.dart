@@ -6,8 +6,10 @@ import 'package:flutter_photo/PhotoHero.dart';
 import 'package:flutter_photo/app_lifecycle.dart';
 import 'package:flutter_photo/flutter_widget_lifecycle.dart';
 import 'package:flutter_photo/gesture_page.dart';
+import 'package:flutter_photo/http_page.dart';
 import 'package:flutter_photo/launcher_page.dart';
 import 'package:flutter_photo/less_group_page.dart';
+import 'package:flutter_photo/listview_page.dart';
 import 'package:flutter_photo/photo_app_page.dart';
 import 'package:flutter_photo/plugin_use.dart';
 import 'package:flutter_photo/res_page.dart';
@@ -65,6 +67,8 @@ class _DynamicThemeState extends State<DynamicTheme> {
         'Photo':(BuildContext context)=>PhotoPage(),
         'LogoAnimateApp':(BuildContext context)=>LogoAnimateApp(),
         'HeroAnimation':(BuildContext context)=>RadiaExpansionDemo(),
+        'HttpPage':(BuildContext context)=>HttpPage(),
+        'ListView':(BuildContext context)=>ListViewPage(),
       },
     );
   }
@@ -103,6 +107,9 @@ class _RouteNavigatorStateState extends State<RouteNavigatorState>{
           _item('拍照and相册',PhotoPage(),'Photo'),
           _item('Flutter动画',LogoAnimateApp(),'LogoAnimateApp'),
           _item('FlutterHero动画',RadiaExpansionDemo(),'HeroAnimation'),
+          _item('HttpPage请求',HttpPage(),'HttpPage'),
+          _item('ListView列表',ListViewPage(),'ListView'),
+
         ],
       ),
     );
