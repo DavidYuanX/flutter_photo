@@ -25,6 +25,7 @@ class _ListViewPageState extends State<ListViewPage> {
         Container(
           height: 200,
           child: ListView(
+//            scrollDirection: Axis.horizontal, /// 横向滚动
             children: _buildList(),
           )
         )

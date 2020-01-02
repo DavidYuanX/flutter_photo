@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_photo/Animate_page.dart';
 import 'package:flutter_photo/PhotoHero.dart';
 import 'package:flutter_photo/app_lifecycle.dart';
+import 'package:flutter_photo/collapse_list_page.dart';
 import 'package:flutter_photo/flutter_widget_lifecycle.dart';
 import 'package:flutter_photo/gesture_page.dart';
 import 'package:flutter_photo/http_page.dart';
@@ -24,6 +25,7 @@ class DynamicTheme extends StatefulWidget {
 
 class _DynamicThemeState extends State<DynamicTheme> {
   Brightness _brightness = Brightness.light;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -40,35 +42,41 @@ class _DynamicThemeState extends State<DynamicTheme> {
         body: Column(
           children: <Widget>[
             RaisedButton(
-              onPressed: (){
+              onPressed: () {
                 setState(() {
-                  if(_brightness == Brightness.dark){
+                  if (_brightness == Brightness.dark) {
                     _brightness = Brightness.light;
                   } else {
                     _brightness = Brightness.dark;
                   }
                 });
               },
-              child: Text('切换主题abc',style: TextStyle(fontFamily: 'RubikMonoOne'),), /// 局部改变字体
+              child: Text(
+                '切换主题abc',
+                style: TextStyle(fontFamily: 'RubikMonoOne'),
+              ),
+
+              /// 局部改变字体
             ),
             RouteNavigatorState()
           ],
         ),
       ),
-      routes: <String,WidgetBuilder>{
-        'Less':(BuildContext context)=>LessGroupPage(),
-        'Plugin':(BuildContext context)=>PluginUse(),
-        'Full':(BuildContext context)=>StateFullGroup(),
-        'Gesture':(BuildContext context)=>GesturePage(),
-        'ResPage':(BuildContext context)=>ResPage(),
-        'LaunchPage':(BuildContext context)=>LaunchPage(),
-        'WidgetLifecycle':(BuildContext context)=>WidgetLifecycle(),
-        'AppLifecycle':(BuildContext context)=>AppLifecycle(),
-        'Photo':(BuildContext context)=>PhotoPage(),
-        'LogoAnimateApp':(BuildContext context)=>LogoAnimateApp(),
-        'HeroAnimation':(BuildContext context)=>RadiaExpansionDemo(),
-        'HttpPage':(BuildContext context)=>HttpPage(),
-        'ListView':(BuildContext context)=>ListViewPage(),
+      routes: <String, WidgetBuilder>{
+        'Less': (BuildContext context) => LessGroupPage(),
+        'Plugin': (BuildContext context) => PluginUse(),
+        'Full': (BuildContext context) => StateFullGroup(),
+        'Gesture': (BuildContext context) => GesturePage(),
+        'ResPage': (BuildContext context) => ResPage(),
+        'LaunchPage': (BuildContext context) => LaunchPage(),
+        'WidgetLifecycle': (BuildContext context) => WidgetLifecycle(),
+        'AppLifecycle': (BuildContext context) => AppLifecycle(),
+        'Photo': (BuildContext context) => PhotoPage(),
+        'LogoAnimateApp': (BuildContext context) => LogoAnimateApp(),
+        'HeroAnimation': (BuildContext context) => RadiaExpansionDemo(),
+        'HttpPage': (BuildContext context) => HttpPage(),
+        'ListView': (BuildContext context) => ListViewPage(),
+        'ExpansionTileSample': (BuildContext context) => ExpansionTileSample(),
       },
     );
   }
@@ -80,8 +88,9 @@ class RouteNavigatorState extends StatefulWidget {
   _RouteNavigatorStateState createState() => _RouteNavigatorStateState();
 }
 
-class _RouteNavigatorStateState extends State<RouteNavigatorState>{
-  bool byName= false;
+class _RouteNavigatorStateState extends State<RouteNavigatorState> {
+  bool byName = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -90,46 +99,50 @@ class _RouteNavigatorStateState extends State<RouteNavigatorState>{
         runSpacing: 6, // 垂直间距
         children: <Widget>[
           SwitchListTile(
-            title: Text('${byName?'':'不'}通过路由名跳转'),
-            value: byName,onChanged: (value){
-            setState(() {
-              byName = value;
-            });
-          },),
-          _item('包和插件',PluginUse(),'Plugin'),
-          _item('lessWidget与基础组件',LessGroupPage(),'Less'),
-          _item('fullWidget与基础组件',StateFullGroup(),'Full'),
-          _item('检测用户手势及处理点击时间',GesturePage(),'Gesture'),
-          _item('导入使用Flutter的资源文件',ResPage(),'ResPage'),
-          _item('打开第三方应用',LaunchPage(),'LaunchPage'),
-          _item('Flutter页面生命周期',WidgetLifecycle(),'WidgetLifecycle'),
-          _item('Flutter应用生命周期',AppLifecycle(),'AppLifecycle'),
-          _item('拍照and相册',PhotoPage(),'Photo'),
-          _item('Flutter动画',LogoAnimateApp(),'LogoAnimateApp'),
-          _item('FlutterHero动画',RadiaExpansionDemo(),'HeroAnimation'),
-          _item('HttpPage请求',HttpPage(),'HttpPage'),
-          _item('ListView列表',ListViewPage(),'ListView'),
+            title: Text('${byName ? '' : '不'}通过路由名跳转'),
+            value: byName,
+            onChanged: (value) {
+              setState(() {
+                byName = value;
+              });
+            },
+          ),
+          _item('包和插件', PluginUse(), 'Plugin'),
+          _item('lessWidget与基础组件', LessGroupPage(), 'Less'),
+          _item('fullWidget与基础组件', StateFullGroup(), 'Full'),
+          _item('检测用户手势及处理点击时间', GesturePage(), 'Gesture'),
+          _item('导入使用Flutter的资源文件', ResPage(), 'ResPage'),
+          _item('打开第三方应用', LaunchPage(), 'LaunchPage'),
+          _item('Flutter页面生命周期', WidgetLifecycle(), 'WidgetLifecycle'),
+          _item('Flutter应用生命周期', AppLifecycle(), 'AppLifecycle'),
+          _item('拍照and相册', PhotoPage(), 'Photo'),
+          _item('Flutter动画', LogoAnimateApp(), 'LogoAnimateApp'),
+          _item('FlutterHero动画', RadiaExpansionDemo(), 'HeroAnimation'),
+          _item('HttpPage请求', HttpPage(), 'HttpPage'),
+          _item('ListView列表', ListViewPage(), 'ListView'),
+          _item('折叠列表', ExpansionTileSample(), 'ExpansionTileSample'),
 
         ],
       ),
     );
   }
-  _item(String title, page , String routeName) {
+
+  _item(String title, page, String routeName) {
     return Container(
-      child: RaisedButton(onPressed: (){
-          if(byName){
+      child: RaisedButton(
+        onPressed: () {
+          if (byName) {
             Navigator.pushNamed(context, routeName);
-          }else{
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>page));
+          } else {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => page));
           }
-      },
+        },
         child: Text(title),
       ),
     );
   }
-
 }
-
 
 //class MyApp extends StatelessWidget {
 //  // This widget is the root of your application.
