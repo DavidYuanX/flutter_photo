@@ -7,6 +7,7 @@ import 'package:flutter_photo/app_lifecycle.dart';
 import 'package:flutter_photo/collapse_list_page.dart';
 import 'package:flutter_photo/flutter_widget_lifecycle.dart';
 import 'package:flutter_photo/gesture_page.dart';
+import 'package:flutter_photo/gridView_page.dart';
 import 'package:flutter_photo/http_page.dart';
 import 'package:flutter_photo/launcher_page.dart';
 import 'package:flutter_photo/less_group_page.dart';
@@ -77,6 +78,7 @@ class _DynamicThemeState extends State<DynamicTheme> {
         'HttpPage': (BuildContext context) => HttpPage(),
         'ListView': (BuildContext context) => ListViewPage(),
         'ExpansionTileSample': (BuildContext context) => ExpansionTileSample(),
+        'GridViewPage': (BuildContext context) => GridViewPage(),
       },
     );
   }
@@ -121,6 +123,7 @@ class _RouteNavigatorStateState extends State<RouteNavigatorState> {
           _item('HttpPage请求', HttpPage(), 'HttpPage'),
           _item('ListView列表', ListViewPage(), 'ListView'),
           _item('折叠列表', ExpansionTileSample(), 'ExpansionTileSample'),
+          _item('网格布局', GridViewPage(), 'GridViewPage'),
 
         ],
       ),
